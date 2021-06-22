@@ -1,92 +1,39 @@
-# Lishogi Bot
+# lishogi-bot
 
-[![Lishogi Bot Build](https://github.com/TheYoBots/Lishogi-Bot/actions/workflows/lishogi-bot-build.yml/badge.svg)](https://github.com/TheYoBots/Lishogi-Bot/actions/workflows/lishogi-bot-build.yml)
-[![Python Build](https://github.com/TheYoBots/Lishogi-Bot/actions/workflows/python-build.yml/badge.svg)](https://github.com/TheYoBots/Lishogi-Bot/actions/workflows/python-build.yml)
-[![Lishogi Bots](https://img.shields.io/badge/Lishogi_Bots-%40Bot-blue.svg)](https://lishogi.org/player/bots)
+[![Python Build](https://github.com/The-bot-makers/Lishogi-Bot/actions/workflows/python-build.yml/badge.svg)](https://github.com/The-bot-makers/Lishogi-Bot/actions/workflows/python-build.yml)
 
-A bridge between [Lichess API](https://lichess.org/api#tag/Bot) and Lishogi USI Bots. In case you don't know English, view the [Japanese Translation here (日本語翻訳)](https://github.com/TheYoBots/Lishogi-Bot/wiki/Japanese-Translation).
+The code template to make a Lishogi Bot and deploy it to heroku server easily.
 
-## How to Install
+This is the code of [@libot](https://lishogi.org/@/libot) in [lishogi.org](https://lishogi.org)
 
-### Mac/Linux:
+Engine communication code taken from https://github.com/TheYoBots/Lishogi-Bot by [TheYoBots](https://github.com/TheYoBots)
 
-- **NOTE: Only Python 3.7 or later is supported!**
-- Download the repo into Lishogi-Bot directory.
-- Navigate to the directory in cmd/Terminal: `cd Lishogi-Bot`.
-- Install pip: `apt install python3-pip`.
-- Install virtualenv: `pip install virtualenv`.
-- Setup virtualenv: `apt install python3-venv`.
-```python
-python3 -m venv venv  # if this fails you probably need to add Python3 to your PATH.
-virtualenv .venv -p python3  # if this fails you probably need to add Python3 to your PATH.
-source ./venv/bin/activate
-python3 -m pip install -r requirements.txt
-```
-- Copy `config.yml.default` to `config.yml`.
-- Edit the `config.yml` file to your liking by changing the supported [variants](https://github.com/TheYoBots/Lishogi-Bot/blob/master/config.yml.default#L42-L44), [timings](https://github.com/TheYoBots/Lishogi-Bot/blob/master/config.yml.default#L45-L51), [challenge modes](https://github.com/TheYoBots/Lishogi-Bot/blob/master/config.yml.default#L52-L54) and [incoming challenges](https://github.com/TheYoBots/Lishogi-Bot/blob/master/config.yml.default#L31-L41), so that it plays shogi the way you want it to.
+### Shogi Engine
 
-### Windows:
+- Fairy Stockfish 13 POPCNT + SSE41
 
-- **NOTE: Only Python 3.7 or later is supported!**
-- If you don't have Python, you may download it [here](https://www.python.org/downloads/). When installing it, enable `add Python to PATH`, then go to custom installation (this may be not necessary, but on some computers it won't work otherwise) and enable all options (especially `install for all users`), except the last . It's better to install Python in a path without spaces, like `C:\Python\`.
-- To type commands it's better to use PowerShell. Go to Start menu and type `PowerShell`.
-- Then you may need to upgrade pip. Execute `python -m pip install --upgrade pip` in PowerShell.
-- Download the repo into lishogi-bot directory.
-- Navigate to the directory in PowerShell: `cd [folder's adress]` (like `cd C:\shogi\lishogi-bot`).
-- Install virtualenv: `pip install virtualenv`.
-- Setup virtualenv:
+### Heroku Buildpack
 
-```python
-python -m venv .venv  # if this fails you probably need to add Python to your PATH.
-./.venv/Scripts/Activate.ps1  # .\.venv\Scripts\activate.bat should work in cmd in administator mode. This may not work on Windows, and in this case you need to execute "Set-ExecutionPolicy RemoteSigned" first and choose "Y" there (you may need to run Powershell as administrator). After you executed the script, change execution policy back with "Set-ExecutionPolicy Restricted" and pressing "Y").
-pip install -r requirements.txt
-```
-- Copy `config.yml.default` to `config.yml`.
-- Edit the `config.yml` file to your liking by changing the supported [variants](https://github.com/TheYoBots/Lishogi-Bot/blob/master/config.yml.default#L42-L44), [timings](https://github.com/TheYoBots/Lishogi-Bot/blob/master/config.yml.default#L45-L51), [challenge modes](https://github.com/TheYoBots/Lishogi-Bot/blob/master/config.yml.default#L52-L54) and [incoming challenges](https://github.com/TheYoBots/Lishogi-Bot/blob/master/config.yml.default#L31-L41), so that it plays shogi the way you want it to.
+- heroku/python
 
-## Lishogi OAuth
+### Heroku Stack
 
-- Create an account for your bot on [Lishogi.org](https://lishogi.org/signup).
-- **NOTE: If you have previously played games on an existing account, you will not be able to use it as a bot account.**
-- Once your account has been created and you are logged in, [create a personal OAuth2 token with the "Play games with the bot API" ('play:bot' scopes), "Read incoming challenges" ('challenge:read' scopes) and "Create, accept, decline challenges" ('challenge:write' scopes)](https://lishogi.org/account/oauth/token/create?scopes[]=bot:play&scopes[]=challenge:read&scopes[]=challenge:write&description=Lishogi+Bot+Token) selected and a description added.
-- A `token` e.g. `xxxxxxxxxxxxxxxx` will be displayed. Store this in `config.yml` as the `token` field.
-- **NOTE: You won't see this token again on Lishogi, so save it or store it somewhere.**
+- heroku-20 (allowing a maximum hash size of 512 mb)
 
-## Setup Engine
+### How to Use
 
-- Place your engine(s) in the `engine.dir` directory
-- In your `config.yml` file, enter the binary name as the `engine.name` field.
-- Using this process any engine can be added to the bot.
-- **Note: The engine you add has to be running under the USI protocol, then only it will work**
+- Fork this repository.
+- Edit only your token in the config.yml file over [here](/config.yml#L1).
+- Create a new heroku app.
+- Go to the 'Deploy' tab and click 'Connect to GitHub'.
+- Click on 'search' and then select your fork of this repository.
+- Then 'Enable Automatic Deploys' and then select the 'master' branch (which is already done by default) and Click 'Deploy'.
+- Once it has been deployed, go to 'Resources' tab on heroku and enable 'worker' (bash startbot.sh) dynos. (do note that if you don't see any dynos in the 'Resources' tab, then you must wait for about 5 minutes and then refresh your heroku page.)
+- You're now connected to lishogi and awaiting challenges! Your bot is up and ready!
 
-## Lishogi Upgrade to Bot Account
+### Important Notes
 
-**WARNING: This is irreversible. Read more about [upgrading to bot account](https://lichess.org/api#operation/botAccountUpgrade).**
-- run `python lishogi-bot.py -u`
-- for more verbrose logs run `python lishogi-bot.py -v`
-
-## Tips & Tricks
-
-- You can specify a different config file with the `--config` argument.
-- Here's an example systemd service definition:
-```python
-[Unit]
-Description=Lishogi-Bot
-After=network-online.target
-Wants=network-online.target
-
-[Service]
-Environment="PYTHONUNBUFFERED=1"
-ExecStart=/usr/bin/python3/home/User/Lishogi-Bot/Lishogi-Bot.py
-WorkingDirectory=/home/User/lishogi-bot/
-User=UserName
-Group=GroupName
-Restart=always
-
-[Install]
-WantedBy=multi-user.target
-```
-
-# Acknowledgements
-
-Thanks to the Lichess Team for creating a [repository](https://github.com/ShailChoksi/lichess-bot) that could be easily accessed and modified to help converting it to a format that supports Lishogi and for running an [API](https://lichess.org/api) which is used by lishogi. Thanks to the [Tasuku SUENAGA a.k.a. gunyarakun](https://github.com/gunyarakun) and his [python-shogi](https://github.com/gunyarakun) code which allows engine communication seamlessly. Thanks to  [WandererXII](https://github.com/WandererXII) for all his effort and help.
+- This code might result in many crashes, so if any error shows up in the logs, immediately restart all dynos by clucking on 'more' in the top right corner of your heroku app and then click 'restart all dynos'.
+- Do note that on heroku you are allowed a maximum of 550 hours a month, so you can't run your bot 24/7 unless you have a verified account. To get a verified account you will need to provide your payment details, but no payment is required. Once this is done, your account becomes verified and you are provided an additional 450 hours a month which sums up to a total of 1000 hours a month which is more than what is needed to run your bot 24/7 on lishogi.
+- This bot uses 256 MB hash size with 5 threads (heroku-20). This is quite strong, but the downside is games at a time. Heroku's free dyno's limitations are crossed even with 2-3 games in one go. So make sure you don't play many games in one go. If you want multiple games at a time, reduce the values of threads and hash in the [config.yml file](/config.yml#L14-L15) and use multithreading to handle multiple games. This is mainly caused due to rate limiting from heroku. This can be prevented by decreasing the hash and threads in the config.yml file.
+- Compared to other bots, this bot plays relatively slow, and the time taken is static. We are trying to figure out a way to have better time management.
