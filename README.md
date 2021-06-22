@@ -1,6 +1,5 @@
 # lishogi-bot
 
-[![Python Build](https://github.com/lidevelopers/Lishogi-Bot-Heroku/actions/workflows/python-build.yml/badge.svg)](https://github.com/lidevelopers/Lishogi-Bot-Heroku/actions/workflows/python-build.yml)
 
 The code template to make a Lishogi Bot and deploy it to heroku server easily.
 
