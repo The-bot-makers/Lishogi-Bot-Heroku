@@ -1,7 +1,6 @@
 # lishogi-bot
 
-[![Lishogi Bot Build](https://github.com/lidevelopers/Lishogi-Bot-Heroku/actions/workflows/lishogi-bot-build.yml/badge.svg)](https://github.com/lidevelopers/Lishogi-Bot-Heroku/actions/workflows/lishogi-bot-build.yml)
-[![Python Build](https://github.com/lidevelopers/Lishogi-Bot-Heroku/actions/workflows/python-build.yml/badge.svg)](https://github.com/lidevelopers/Lishogi-Bot-Heroku/actions/workflows/python-build.yml)
+[![Python Build](https://github.com/The-bot-makers/Lishogi-Bot/actions/workflows/python-build.yml/badge.svg)](https://github.com/The-bot-makers/Lishogi-Bot/actions/workflows/python-build.yml)
 
 The code template to make a Lishogi Bot and deploy it to heroku server easily.
 
