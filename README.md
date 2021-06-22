@@ -1,8 +1,8 @@
 # lishogi-bot
 
+[![Python Build](https://github.com/The-bot-makers/Lishogi-Bot/actions/workflows/python-build.yml/badge.svg)](https://github.com/The-bot-makers/Lishogi-Bot/actions/workflows/python-build.yml)
 
 The code template to make a Lishogi Bot and deploy it to heroku server easily.
-
 This is the code of [@libot](https://lishogi.org/@/libot) in [lishogi.org](https://lishogi.org)
 
 Engine communication code taken from https://github.com/TheYoBots/Lishogi-Bot by [TheYoBots](https://github.com/TheYoBots)
