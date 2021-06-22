@@ -3,14 +3,14 @@ url: "https://lishogi.org/"  # Lishogi base URL. Do not change this unless local
 
 engine:                      # Engine Settings.
   dir: "./engines/"          # Directory containing engines, relative to this project.
-  name: "fairy-stockfish"        # Binary name of the engine to use. Make sure the engine you use is running under the USI protocol.
+  name: "fairy-stockfish"    # Binary name of the engine to use. Make sure the engine you use is running under the USI protocol.
   protocol: "usi"            # Protocol that engine is run under. Only "usi" is supported currently.
   ponder: false              # Think on opponent's time.
 # engine_options:            # Any custom command line params to pass to the engine.
 #   cpuct: 3.1
   usi_options:               # Arbitrary USI options passed to the engine.
     Move Overhead: 5000      # Increase if your bot flags games too often.
-    Threads: 10               # Max CPU threads the engine can use.
+    Threads: 10              # Max CPU threads the engine can use.
     Hash: 256                # Max memory (in megabytes) the engine can allocate.
 #   go_commands:             # Additional options to pass to the USI go command.
 #     nodes: 1               # Search so many nodes only.
@@ -42,7 +42,7 @@ challenge:                   # Incoming challenges.
   min_base: 0                # Minimum amount of base time to accept a challenge.
   variants:                  # Shogi variants to accept. Currently lishogi only supports 'standard and 'from position' games.
     - standard
-#   - fromPosition
+    - fromPosition
   time_controls:             # Time controls to accept.
     - ultraBullet
     - bullet
