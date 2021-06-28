@@ -3,7 +3,7 @@
 [![Python Build](https://github.com/The-bot-makers/Lishogi-Bot/actions/workflows/python-build.yml/badge.svg)](https://github.com/The-bot-makers/Lishogi-Bot/actions/workflows/python-build.yml)
 
 The code template to make a Lishogi Bot and deploy it to heroku server easily.
-This is the code of [@libot](https://lishogi.org/@/libot) in [lishogi.org](https://lishogi.org)
+This is the code of [@libot](https://lishogi.org/@/libot) and similar heroku run bots in [lishogi.org](https://lishogi.org)
 
 Engine communication code taken from https://github.com/TheYoBots/Lishogi-Bot by [TheYoBots](https://github.com/TheYoBots)
 
@@ -28,7 +28,8 @@ Engine communication code taken from https://github.com/TheYoBots/Lishogi-Bot by
 - Click on `search` and then select your fork of this repository.
 - Then `Enable Automatic Deploys` and then select the `main` branch (which is already done by default usually) and Click `Deploy`.
 - Once it has been deployed, go to `Resources` tab on heroku and enable `worker (bash startbot.sh)` dynos. (Do note that if you don't see any dynos in the `Resources` tab, then you must wait for about 5 minutes and then refresh your heroku page.)
-- You're now connected to lishogi and awaiting challenges! Your bot is up and ready!
+
+You're now connected to lishogi and awaiting challenges! Your bot is up and ready!
 
 ### Important Notes
 
