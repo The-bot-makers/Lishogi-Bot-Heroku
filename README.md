@@ -1,3 +1,5 @@
+# **Not Maintained Anymore. Do checkout https://github.com/TheYoBots/Lishogi-Bot or https://github.com/United-Libots-Association/Lishogi-Bot which maintained.**
+
 # lishogi-bot
 
 [![Python Build](https://github.com/The-bot-makers/Lishogi-Bot/actions/workflows/python-build.yml/badge.svg)](https://github.com/The-bot-makers/Lishogi-Bot/actions/workflows/python-build.yml)
